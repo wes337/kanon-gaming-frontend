@@ -1,58 +1,70 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { useCallback, useEffect } from "react";
+import {
+  Center,
+  Loader,
+  Container,
+  Title,
+  Stack,
+  Button,
+  Text,
+} from "@mantine/core";
+import { IconMoodSad } from "@tabler/icons";
+import { useAppSelector, useAppDispatch } from "./app/hooks";
+import {
+  selectStatus,
+  selectCountries,
+  asyncFetchAllCountries,
+} from "./app/slice";
+import { SearchInput } from "./components/SearchInput";
+import { CountryList } from "./components/CountryList";
+import { NoResults } from "./components/NoResults";
 
-function App() {
+const App = () => {
+  const status = useAppSelector(selectStatus);
+  const countries = useAppSelector(selectCountries);
+  const dispatch = useAppDispatch();
+
+  const fetchAllCountries = useCallback(() => {
+    dispatch(asyncFetchAllCountries());
+  }, [dispatch]);
+
+  useEffect(() => {
+    fetchAllCountries();
+  }, [fetchAllCountries]);
+
+  if (status === "loading") {
+    return (
+      <Center p="xl">
+        <Loader size="xl" />
+      </Center>
+    );
+  }
+
+  if (status === "failed") {
+    return (
+      <Center p="xl">
+        <Stack align="center" justify="center">
+          <IconMoodSad size={32} />
+          <Text>Sorry, something went wrong.</Text>
+          <Button onClick={fetchAllCountries}>Try again</Button>
+        </Stack>
+      </Center>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Container p="xs">
+      <Title mb="sm" align="center">
+        Rest Countries
+      </Title>
+      <SearchInput />
+      {countries.length > 0 ? (
+        <CountryList countries={countries} />
+      ) : (
+        <NoResults />
+      )}
+    </Container>
   );
-}
+};
 
 export default App;
