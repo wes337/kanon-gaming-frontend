@@ -77,8 +77,8 @@ export const SqlQuestions = () => {
       <Stack align="center" spacing="xl">
         <Title order={5}>Question 2</Title>
         <Text px="xl">
-          SQL query to get all players that have games of type "SLOT" as their
-          favorite games.
+          SQL query to get all players that have games of type &quot;SLOT&quot;
+          as their favorite games.
         </Text>
         <Prism language="sql">{questionTwo}</Prism>
       </Stack>

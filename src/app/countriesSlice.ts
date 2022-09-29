@@ -6,9 +6,10 @@ import {
 } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 import { fetchAllCountries } from "./api";
+import { Country } from "./types";
 
 export interface CountriesState {
-  countries: any[];
+  countries: Country[];
   status: "idle" | "loading" | "failed";
   searchQuery: string;
 }

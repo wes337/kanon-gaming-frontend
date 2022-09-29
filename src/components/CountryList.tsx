@@ -9,7 +9,7 @@ interface CountryListProps {
   countries: Countries;
 }
 
-export const CountryList: React.FC<CountryListProps> = ({ countries }) => {
+export const CountryList = ({ countries }: CountryListProps) => {
   const [paginatedCountries, setPaginatedCountries] = useState(countries);
   const [paginationLabel, setPaginationLabel] = useState("");
 

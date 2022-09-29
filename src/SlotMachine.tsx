@@ -61,8 +61,9 @@ export const SlotMachine = () => {
           </Text>
         </Title>
         <Group position="center">
-          {spin.map((fruit) => (
+          {spin.map((fruit, index) => (
             <Box
+              key={index}
               p="xl"
               sx={(theme) => ({
                 backgroundColor:

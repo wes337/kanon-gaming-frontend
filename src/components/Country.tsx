@@ -1,7 +1,7 @@
 import { Card, Image, Box, Text, Badge } from "@mantine/core";
 import { Country as CountryProps } from "../app/types";
 
-export const Country: React.FC<CountryProps> = ({
+export const Country = ({
   name,
   flags,
   population,
@@ -9,7 +9,7 @@ export const Country: React.FC<CountryProps> = ({
   region,
   subregion,
   languages,
-}) => {
+}: CountryProps) => {
   const getLanguageText = (): string => {
     if (languages) {
       return `The official languages are ${Object.values(languages).join(
