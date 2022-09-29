@@ -2,7 +2,7 @@
 
 This is the client for the front end part of the the Kanon Gaming assignment.
 
-You can see this live [here](https://redux.js.org/).
+You can see this live [here](http://wes337.github.io/kanon-gaming-frontend).
 
 Or clone this repo and run:
 
