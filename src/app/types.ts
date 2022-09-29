@@ -20,3 +20,24 @@ export type Country = {
 };
 
 export type Countries = Country[];
+
+export const FRUIT = {
+  CHERRY: "cherry",
+  LEMON: "lemon",
+  APPLE: "apple",
+  BANANA: "banana",
+} as const;
+
+const fruits = Object.values(FRUIT);
+export type Fruit = typeof fruits[number];
+export type Spin = [Fruit | null, Fruit | null, Fruit | null];
+
+export const APP = {
+  REST_COUNTRIES: "Rest Countries",
+  SLOT_MACHINE: "Slot Machine",
+  SQL: "SQL Questions",
+  HOME: "Home",
+} as const;
+
+const appNames = Object.values(APP);
+export type AppName = typeof appNames[number];

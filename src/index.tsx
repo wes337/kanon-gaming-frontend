@@ -1,19 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-import { MantineProvider } from "@mantine/core";
+import {
+  MantineProvider,
+  ColorSchemeProvider,
+  ColorScheme,
+} from "@mantine/core";
 import { store } from "./app/store";
 import App from "./App";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
 
+const AppWrapper = () => {
+  const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
+  const toggleColorScheme = (value?: ColorScheme) =>
+    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+
+  return (
+    <ColorSchemeProvider
+      colorScheme={colorScheme}
+      toggleColorScheme={toggleColorScheme}
+    >
+      <MantineProvider
+        theme={{ colorScheme }}
+        withGlobalStyles
+        withNormalizeCSS
+      >
+        <App />
+      </MantineProvider>
+    </ColorSchemeProvider>
+  );
+};
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <MantineProvider withGlobalStyles withNormalizeCSS>
-        <App />
-      </MantineProvider>
+      <AppWrapper />
     </Provider>
   </React.StrictMode>
 );

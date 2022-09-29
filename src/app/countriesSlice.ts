@@ -23,11 +23,11 @@ export const asyncFetchAllCountries = createAsyncThunk(
   "countries/fetchAllCountries",
   async () => {
     const response = await fetchAllCountries();
-    return response.data;
+    return response;
   }
 );
 
-export const slice = createSlice({
+export const countriesSlice = createSlice({
   name: "countries",
   initialState,
   reducers: {
@@ -50,7 +50,7 @@ export const slice = createSlice({
   },
 });
 
-export const { setSearchQuery } = slice.actions;
+export const { setSearchQuery } = countriesSlice.actions;
 
 export const selectStatus = (state: RootState) => state.countries.status;
 export const selectAllCountries = (state: RootState) =>
@@ -73,4 +73,4 @@ export const selectCountries = createSelector(
   }
 );
 
-export default slice.reducer;
+export const { reducer: countriesReducer } = countriesSlice;

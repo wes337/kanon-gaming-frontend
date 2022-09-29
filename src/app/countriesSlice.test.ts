@@ -1,4 +1,8 @@
-import countriesReducer, { CountriesState, setSearchQuery } from "./slice";
+import {
+  CountriesState,
+  countriesReducer,
+  setSearchQuery,
+} from "./countriesSlice";
 
 describe("countries slice", () => {
   const initialState: CountriesState = {

@@ -3,7 +3,7 @@ import { useDebouncedState } from "@mantine/hooks";
 import { TextInput, ActionIcon } from "@mantine/core";
 import { IconSearch, IconX } from "@tabler/icons";
 import { useAppDispatch } from "../app/hooks";
-import { setSearchQuery } from "../app/slice";
+import { setSearchQuery } from "../app/countriesSlice";
 
 export const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);

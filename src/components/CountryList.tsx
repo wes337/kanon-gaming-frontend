@@ -35,6 +35,7 @@ export const CountryList: React.FC<CountryListProps> = ({ countries }) => {
         <Pagination
           onChange={handlePageChange}
           total={Math.max(countries.length / PAGE_SIZE, 1)}
+          sx={{ justifyContent: "center" }}
         />
       </Group>
       <Divider my="xs" label={paginationLabel} labelPosition="center" />

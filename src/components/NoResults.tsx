@@ -1,7 +1,7 @@
 import { Center, Box, Text, Stack } from "@mantine/core";
 import { IconMoodConfuzed } from "@tabler/icons";
 import { useAppSelector } from "../app/hooks";
-import { selectSearchQuery } from "../app/slice";
+import { selectSearchQuery } from "../app/countriesSlice";
 
 export const NoResults = () => {
   const searchQuery = useAppSelector(selectSearchQuery);

@@ -1,6 +1,6 @@
-# Rest Countries Front-End
+# Kanon Gaming Assignment (Front End)
 
-This is the Rest Countries front-end part of the the Kanon Gaming assignment (question 3).
+This is the client for the front end part of the the Kanon Gaming assignment.
 
 You can see this live [here](https://redux.js.org/).
 
@@ -16,5 +16,5 @@ npm start
 To launch the test runner:
 
 ```bash
-npm test
+npm run test
 ```
